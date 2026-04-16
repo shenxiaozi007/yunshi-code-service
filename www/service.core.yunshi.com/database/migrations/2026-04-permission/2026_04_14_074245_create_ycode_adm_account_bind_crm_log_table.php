@@ -12,10 +12,10 @@ return new class extends Migration
             $table->comment('核心系统-管理员绑定crm用户操作记录');
             $table->bigIncrements('id');
             $table->string('log_no', 64)->default('')->comment('日志编号')->unique();
-            $table->string('ycode_account_no', 64)->default('')->comment('对应ycode_adm_account')->index();
+            $table->string('ycode_account_no', 64)->default('')->comment('对应ycode_account_no')->index();
             $table->string('ycode_real_name', 64)->default('')->comment('真实姓名');
-            $table->string('ysm_user_no', 64)->default('')->comment('绑定的crm账户编号')->index();
-            $table->string('ysm_user_real_name', 64)->default('')->comment('绑定的crm账户真实姓名');
+            $table->string('ycrm_user_no', 64)->default('')->comment('绑定的crm账户编号')->index();
+            $table->string('ycrm_user_real_name', 64)->default('')->comment('绑定的crm账户真实姓名');
             $table->string('action', 32)->default('')->comment('动作：绑定，解绑');
             $table->unsignedInteger('action_at')->default(0)->comment('操作此动作的时间');
             $table->unsignedInteger('add_admin_id')->default(0)->comment('添加的管理员id');
