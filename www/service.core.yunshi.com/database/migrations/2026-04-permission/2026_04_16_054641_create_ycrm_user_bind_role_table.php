@@ -16,7 +16,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('user_bind_role_no', 64)->default('')->comment('关系编号')->unique();
             $table->string('role_no', 64)->default('')->comment('角色no')->index();
-            $table->string('permission_no', 64)->default('')->comment('权限no')->index();
+            $table->string('user_no', 64)->default('')->comment('用户编号')->index();
             $table->string('encryption_option', 32)->default('')->comment('选择的加密选项');
             $table->unsignedInteger('add_admin_id')->default(0)->comment('添加此角色的管理员id');
             $table->string('add_admin_name', 64)->default('')->comment('添加此角色的管理员真实姓名');
