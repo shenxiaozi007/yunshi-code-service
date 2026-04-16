@@ -10,8 +10,9 @@ return new class extends Migration
     {
         Schema::create('ycrm_user_position', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30)->default('')->comment('职位名称');
+            $table->string('position_no', 64)->default('')->comment('职位编号')->unique();
             $table->unsignedTinyInteger('position_grade')->default(0)->comment('职位等级');
+            $table->string('name', 30)->default('')->comment('职位名称');
             $table->string('remark', 512)->default('')->comment('描述');
             $table->unsignedInteger('add_core_adm_id')->default(0)->comment('添加此角色的管理员id');
             $table->string('add_core_adm_name', 64)->default('')->comment('添加此角色的管理员真实姓名');

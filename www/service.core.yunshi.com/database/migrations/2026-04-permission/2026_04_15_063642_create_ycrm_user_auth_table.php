@@ -10,7 +10,8 @@ return new class extends Migration
     {
         Schema::create('ycrm_user_auth', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('ycrm_user_id')->default(0)->comment('用户id')->index();
+            $table->string('user_auth_no', 64)->default('')->comment('用户auth编号')->unique();
+            $table->string('user_no', 64)->default('')->comment('用户编号')->index();
             $table->string('password', 64)->default('')->comment('密码');
             $table->string('salt', 32)->default('')->comment('盐');
             $table->unsignedInteger('add_time')->default(0)->comment('添加时间');
