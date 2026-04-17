@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('position_no', 64)->default('')->comment('职位编号')->index();
             $table->unsignedTinyInteger('position_grade')->default(0)->comment('职位等级');
             $table->unsignedInteger('birthday')->default(0)->comment('生日，格式为：年月日');
-            $table->string('nickname', 64)->default('')->comment('昵称,同步用户服务的代理人昵称');
+            $table->string('nickname', 64)->default('')->comment('昵称');
             $table->string('job_sn', 64)->default('')->comment('工号')->index();
             $table->string('real_name', 64)->default('')->comment('成员姓名');
             $table->string('account', 64)->default('')->comment('账户')->index();
