@@ -376,7 +376,6 @@ abstract class JWTGuard implements Guard
 
     /**
      * 清除token key 集合中过期的key
-     * @author evan766
      */
     public function clearOverDueSetToken()
     {

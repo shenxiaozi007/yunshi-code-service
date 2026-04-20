@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('ycrm_user', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_no', 64)->default('')->comment('用户编号')->unique();
+            $table->string('sales_no', 64)->default('')->comment('销售编号')->unique();
             $table->string('position_no', 64)->default('')->comment('职位编号')->index();
             $table->unsignedTinyInteger('position_grade')->default(0)->comment('职位等级');
             $table->unsignedInteger('birthday')->default(0)->comment('生日，格式为：年月日');

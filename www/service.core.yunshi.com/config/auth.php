@@ -41,6 +41,7 @@ return [
 
         // 管理后台 认证
         'jwt-management' => [
+
             'driver' => AuthDriver::MANAGEMENT,
             'header' => 'Management-Authorization',
             'cache'  => [

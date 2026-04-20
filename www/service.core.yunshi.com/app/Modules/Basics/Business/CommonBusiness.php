@@ -5,10 +5,8 @@ namespace App\Modules\Basics\Business;
 use App\Exceptions\Common\AppException;
 use App\Kernel\Base\BaseBusiness;
 use App\Kernel\Traits\RegionArrTrait;
-use App\Modules\Basics\Dao\CfyfService\ProductServiceFeeTemplate\PrSupplierCommonRegionDao;
 use App\Modules\Basics\Dao\Common\BaseRegionDao;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class CommonBusiness
@@ -23,7 +21,6 @@ class CommonBusiness extends BaseBusiness
      */
     public function __construct(
         protected BaseRegionDao $baseRegionDao,
-        protected PrSupplierCommonRegionDao $commonRegionDao,
     ) {
     }
 
@@ -80,21 +77,6 @@ class CommonBusiness extends BaseBusiness
     }
 
     /**
-     * @return Builder[]|Collection
-     * @throws AppException
-     */
-    public function commonRegionListTwoStage()
-    {
-        $relations = [
-            'children:id,region_no,parent_id,name'
-        ];
-
-        $columns = ['id', 'region_no', 'parent_id', 'name'];
-
-        return  $this->commonRegionDao->getList(['parent_id' => 0], $columns, $relations);
-    }
-
-    /**
      * 后台最新版本号
      * @return array
      */
@@ -104,6 +86,5 @@ class CommonBusiness extends BaseBusiness
             'latest_version' => config('site.backend_web.version'),
         ];
     }
-
 
 }

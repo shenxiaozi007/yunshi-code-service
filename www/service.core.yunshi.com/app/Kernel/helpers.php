@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Basics\Constant\Common\Gender;
 use App\Modules\Basics\Constant\Insurance\RetainDecimalMethod;
 use Carbon\Carbon;
 use Laravel\Lumen\Routing\Router;
@@ -1052,5 +1053,28 @@ if (!function_exists('generate_code')) {
         $length = bcsub($length, strlen($prefix));
 
         return $prefix . str_random($length);
+    }
+}
+
+if (!function_exists('recognize_id_card')) {
+    /**
+     * 身份证信息识别
+     *
+     * @param $number
+     * @param $outputFormat
+     * @return array
+     */
+    function recognize_id_card($number, $outputFormat = 'Ymd')
+    {
+        if (strlen($number) == 18) {
+            $birthday = Carbon::createFromFormat('Ymd', substr($number, 6, 8))->format($outputFormat);
+            return [
+                'birthday' => $birthday,
+                'gender'   => intval($number[16]) % 2 ? Gender::MALE : Gender::FEMALE,
+                'age'      => calculate_age($birthday),
+            ];
+        }
+
+        return [];
     }
 }
