@@ -171,11 +171,5 @@ $router->group(['prefix' => 'rbac/sys-user', 'namespace' => 'Rbac'], function ($
                 'uses' => 'SysUserController@setSysUserManageSpecificCompany',
             ]
         );
-
-        // 启用插件采集状态编辑
-        $router->post('save-extension-status', [
-            'as'   => WebRoute::MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS,
-            'uses' => 'SysUserController@saveExtensionStatus',
-        ]);
     });
 });

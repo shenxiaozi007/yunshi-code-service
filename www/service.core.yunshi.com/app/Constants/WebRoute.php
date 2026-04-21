@@ -13,6 +13,76 @@ class WebRoute extends BaseConstant
 {
     const AUTH_NEEDLESS = '`auth_needless`';
 
+    // ---- new
+    // ========================================= rbac路由 =================================================== //
+    /** 我的权限列表 **/
+    const MANAGEMENT_SYS_PERMISSION_MY_PERMISSION_LIST = 'management.sys_permission.my_permission_list`auth_needless`';
+    /** 角色权限详情 **/
+    const MANAGEMENT_RBAC_SYS_PERMISSION_GROUP_DETAIL = 'management.rbac.sys_permission_group.detail';
+    /** 角色权限详情 **/
+    const MANAGEMENT_SYS_ROLE_PERMISSION_RELATION_UPDATE = 'management.sys_role_permission_relation.update`log`';
+    /** 角色数据权限详情 **/
+    const MANAGEMENT_RBAC_SYS_REPORT_PERMISSION_GROUP_DETAIL = 'management.rbac.sys_report_permission_group.detail';
+    /** 角色数据权限更新 **/
+    const MANAGEMENT_SYS_ROLE_REPORT_PERMISSION_RELATION_UPDATE = 'management.sys_role_report_permission_relation.update`log`';
+    /** 登录 **/
+    const MANAGEMENT_LOGIN = 'management.login`auth_needless,log`';
+    /** 登出 **/
+    const MANAGEMENT_LOGOUT = 'management.logout`auth_needless`';
+
+    /** 系统用户 **/
+    /** 修改个人密码 **/
+    const MANAGEMENT_SYS_USER_CHANGE_PERSONAL_PASSWORD = 'management.sys_user.change_personal_password`auth_needless,log`';
+    /** 更新头像 **/
+    const MANAGEMENT_SYS_USER_CHANGE_PERSONAL_AVATAR = 'management.sys_user.change_personal_avatar`auth_needless,log`';
+    /** 账号详情 **/
+    const MANAGEMENT_SYS_USER_DETAIL = 'management.sys_user.detail`auth_needless`';
+    /** 当前成员信息 **/
+    const MANAGEMENT_SYS_USER_USER_INFO = 'management.sys_user.user_info`auth_needless`';
+    /** 新增成员 **/
+    const MANAGEMENT_SYS_USER_STORE = 'management.sys_user.store`log`';
+    /** 更新成员 **/
+    const MANAGEMENT_SYS_USER_UPDATE = 'management.sys_user.update`log`';
+    /** 成员列表 **/
+    const MANAGEMENT_SYS_USER_GET_PAGE_LIST = 'management.sys_user.get_page_list';
+    /** 成员列表（不分页） **/
+    const MANAGEMENT_SYS_USER_GET_LIST = 'management.sys_user.get_list';
+    /** 更新成员状态 **/
+    const MANAGEMENT_SYS_USER_UPDATE_ACCOUNT_STATUS = 'management.sys_user.update_account_status`log`';
+    /** 修改成员密码 **/
+    const MANAGEMENT_SYS_USER_UPDATE_PASSWORD = 'management.sys_user.update_password`log`';
+    /** 绑定CRM **/
+    const MANAGEMENT_SYS_USER_BIND_USER = 'management.sys_user.bind_user`log`';
+    /** 解绑CRM **/
+    const MANAGEMENT_SYS_USER_UNBIND_USER = 'management.sys_user.unbind_user`log`';
+    /** 获取密码登录状态 **/
+    const MANAGEMENT_SYS_USER_PASSWORD_EXPIRE_STATUS = 'management.sys_user.password_expire_status`auth_needless`';
+    /** 强制退出 **/
+    const MANAGEMENT_SYS_USER_FORCE_LOGOUT_BY_ACCOUNT = 'management.sys_user.force_logout_by_account`log`';
+    /** 设置内部管理员细分管理外部公司 */
+    const MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY = 'management.sys_user.set_manage_specific_company`log`';
+    /**启用插件采集状态编辑**/
+    const MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS = 'management.sys_user.save_extension_status`log`';
+
+    /** 系统角色 **/
+    /** 新增角色 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_STORE = 'management.rbac.sys_role.store`log`';
+    /** 复制角色 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_COPY = 'management.rbac.sys_role.copy`log`';
+    /** 更新角色 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_UPDATE = 'management.rbac.sys_role.update`log`';
+    /** 删除角色 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_DELETE = 'management.rbac.sys_role.delete`log`';
+    /** 角色详情 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_DETAIL = 'management.rbac.sys_role.detail';
+    /** 角色列表 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_PAGE_LIST = 'management.rbac.sys_role.page_list';
+    /** 角色下拉列表 **/
+    const MANAGEMENT_RBAC_SYS_ROLE_SELECT_LIST = 'management.rbac.sys_role.select_list`auth_needless`';
+    // ========================================= rbac路由 =================================================== //
+    
+    // ---- new
+
     // ========================================= 艾客数据 =================================================== //
     /** 通话记录列表 **/
     const MANAGEMENT_AIKE_GET_AIAGAIN_CALLRECORD_LIST = 'management.aike.get-aiagain-callrecord-list';
@@ -732,72 +802,6 @@ class WebRoute extends BaseConstant
     const MANAGEMENT_PRODUCT_GET_INSURANCE_CATEGORY = 'management.product.get_insurance_category`auth_needless`';
     // ========================================= 产品路由 =================================================== //
 
-    // ========================================= rbac路由 =================================================== //
-    /** 我的权限列表 **/
-    const MANAGEMENT_SYS_PERMISSION_MY_PERMISSION_LIST = 'management.sys_permission.my_permission_list`auth_needless`';
-    /** 角色权限详情 **/
-    const MANAGEMENT_RBAC_SYS_PERMISSION_GROUP_DETAIL = 'management.rbac.sys_permission_group.detail';
-    /** 角色权限详情 **/
-    const MANAGEMENT_SYS_ROLE_PERMISSION_RELATION_UPDATE = 'management.sys_role_permission_relation.update`log`';
-    /** 角色数据权限详情 **/
-    const MANAGEMENT_RBAC_SYS_REPORT_PERMISSION_GROUP_DETAIL = 'management.rbac.sys_report_permission_group.detail';
-    /** 角色数据权限更新 **/
-    const MANAGEMENT_SYS_ROLE_REPORT_PERMISSION_RELATION_UPDATE = 'management.sys_role_report_permission_relation.update`log`';
-    /** 登录 **/
-    const MANAGEMENT_LOGIN = 'management.login`auth_needless,log`';
-    /** 登出 **/
-    const MANAGEMENT_LOGOUT = 'management.logout`auth_needless`';
-
-    /** 系统用户 **/
-    /** 修改个人密码 **/
-    const MANAGEMENT_SYS_USER_CHANGE_PERSONAL_PASSWORD = 'management.sys_user.change_personal_password`auth_needless,log`';
-    /** 更新头像 **/
-    const MANAGEMENT_SYS_USER_CHANGE_PERSONAL_AVATAR = 'management.sys_user.change_personal_avatar`auth_needless,log`';
-    /** 账号详情 **/
-    const MANAGEMENT_SYS_USER_DETAIL = 'management.sys_user.detail`auth_needless`';
-    /** 当前成员信息 **/
-    const MANAGEMENT_SYS_USER_USER_INFO = 'management.sys_user.user_info`auth_needless`';
-    /** 新增成员 **/
-    const MANAGEMENT_SYS_USER_STORE = 'management.sys_user.store`log`';
-    /** 更新成员 **/
-    const MANAGEMENT_SYS_USER_UPDATE = 'management.sys_user.update`log`';
-    /** 成员列表 **/
-    const MANAGEMENT_SYS_USER_GET_PAGE_LIST = 'management.sys_user.get_page_list';
-    /** 成员列表（不分页） **/
-    const MANAGEMENT_SYS_USER_GET_LIST = 'management.sys_user.get_list';
-    /** 更新成员状态 **/
-    const MANAGEMENT_SYS_USER_UPDATE_ACCOUNT_STATUS = 'management.sys_user.update_account_status`log`';
-    /** 修改成员密码 **/
-    const MANAGEMENT_SYS_USER_UPDATE_PASSWORD = 'management.sys_user.update_password`log`';
-    /** 绑定CRM **/
-    const MANAGEMENT_SYS_USER_BIND_USER = 'management.sys_user.bind_user`log`';
-    /** 解绑CRM **/
-    const MANAGEMENT_SYS_USER_UNBIND_USER = 'management.sys_user.unbind_user`log`';
-    /** 获取密码登录状态 **/
-    const MANAGEMENT_SYS_USER_PASSWORD_EXPIRE_STATUS = 'management.sys_user.password_expire_status`auth_needless`';
-    /** 强制退出 **/
-    const MANAGEMENT_SYS_USER_FORCE_LOGOUT_BY_ACCOUNT = 'management.sys_user.force_logout_by_account`log`';
-    /** 设置内部管理员细分管理外部公司 */
-    const MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY = 'management.sys_user.set_manage_specific_company`log`';
-    /**启用插件采集状态编辑**/
-    const MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS = 'management.sys_user.save_extension_status`log`';
-
-    /** 系统角色 **/
-    /** 新增角色 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_STORE = 'management.rbac.sys_role.store`log`';
-    /** 复制角色 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_COPY = 'management.rbac.sys_role.copy`log`';
-    /** 更新角色 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_UPDATE = 'management.rbac.sys_role.update`log`';
-    /** 删除角色 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_DELETE = 'management.rbac.sys_role.delete`log`';
-    /** 角色详情 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_DETAIL = 'management.rbac.sys_role.detail';
-    /** 角色列表 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_PAGE_LIST = 'management.rbac.sys_role.page_list';
-    /** 角色下拉列表 **/
-    const MANAGEMENT_RBAC_SYS_ROLE_SELECT_LIST = 'management.rbac.sys_role.select_list`auth_needless`';
-    // ========================================= rbac路由 =================================================== //
 
     // ========================================= crm-rbac路由 =================================================== //
     /** 角色权限详情 **/

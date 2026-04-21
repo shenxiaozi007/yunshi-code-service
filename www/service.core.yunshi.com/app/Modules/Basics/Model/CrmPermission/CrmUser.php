@@ -638,29 +638,6 @@ class CrmUser extends BaseModel
     }
 
     /**
-     * 通过旧的工号进行查询
-     * @param Builder $query
-     * @param $value
-     * @return Builder
-     */
-    public function scopeOldJobNoQuery(Builder $query, $value)
-    {
-        return $query->where('old_job_no', $value);
-    }
-
-    /**
-     * use_sales_qualification_no 关联执业证查询.
-     *
-     * @param Builder $query
-     * @param $value
-     * @return Builder
-     */
-    public function scopeUseSalesQualificationNoQuery(Builder $query, $value): Builder
-    {
-        return $query->where('use_sales_qualification_no', $value);
-    }
-
-    /**
      * sales_no 查询
      * @param $query
      * @param $value
@@ -680,17 +657,6 @@ class CrmUser extends BaseModel
     public function scopeInSalesNoQuery($query, $value)
     {
         return $query->whereIn('sales_no', to_array($value));
-    }
-
-    /**
-     * 客服信息编号
-     * @param $query
-     * @param $value
-     * @return mixed
-     */
-    public function scopeCustomerServiceNoQuery($query, $value)
-    {
-        return $query->where('customer_service_no', $value);
     }
 
     /**
@@ -744,15 +710,7 @@ class CrmUser extends BaseModel
         $query->where('department_no', '')->orWhereIn('user_no', to_array($value));
     }
 
-    /**
-     * 根据部门no为空查询
-     * @param Builder $query
-     * @param $value
-     */
-    public function scopeNotEmptyDepartmentNoQuery(Builder $query, $value): void
-    {
-        $query->where('department_no','!=','');
-    }
+
 
     /**
      * 根据sales no not 为空查询

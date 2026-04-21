@@ -4,7 +4,6 @@ namespace App\Modules\Basics\Model\CrmPermission;
 
 use App\Kernel\Traits\ModelMainNoTrait;
 use App\Kernel\Traits\ModelTimeTraits;
-use App\Modules\Basics\Model\Company\CrmUserPosition;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

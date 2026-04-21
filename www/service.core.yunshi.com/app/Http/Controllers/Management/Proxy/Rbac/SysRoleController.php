@@ -14,6 +14,50 @@ use Illuminate\Validation\ValidationException;
  * 后台角色控制器
  * Class SysRoleController
  * @package App\Http\Controllers\Management\Proxy\Rbac
+ * 
+ * ============================================================================
+ * 路由配置 (routes/management/proxy/rbac/sys_role.php)
+ * ============================================================================
+ * 路由前缀: rbac/sys-role
+ * 命名空间: Rbac
+ * 中间件: auth:jwt-management
+ * 
+ * 路由列表:
+ * POST /rbac/sys-role/store
+ *   - 方法: store(Request $request, CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_STORE
+ *   - 说明: 存储角色（需要name, remark参数）
+ * 
+ * POST /rbac/sys-role/copy
+ *   - 方法: copy(Request $request, CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_COPY
+ *   - 说明: 复制角色（需要id, name, remark参数）
+ * 
+ * GET  /rbac/sys-role/detail
+ *   - 方法: detail(Request $request, CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_DETAIL
+ *   - 说明: 获取角色详情（需要id参数）
+ * 
+ * GET  /rbac/sys-role/page-list
+ *   - 方法: getPageList(Request $request, CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_PAGE_LIST
+ *   - 说明: 角色分页列表
+ * 
+ * GET  /rbac/sys-role/select-list
+ *   - 方法: selectList(CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_SELECT_LIST
+ *   - 说明: 角色下拉选择列表（不分页）
+ * 
+ * POST /rbac/sys-role/update
+ *   - 方法: update(Request $request, CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_UPDATE
+ *   - 说明: 更新角色信息（需要id, name, remark参数）
+ * 
+ * GET  /rbac/sys-role/delete
+ *   - 方法: delete(Request $request, CoreRoleBusiness $sysRoleBusiness)
+ *   - 路由名称: MANAGEMENT_RBAC_SYS_ROLE_DELETE
+ *   - 说明: 删除角色（需要id参数）
+ * ============================================================================
  */
 class SysRoleController extends BaseController
 {
