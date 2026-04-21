@@ -15,6 +15,55 @@ use Illuminate\Validation\ValidationException;
  * crm角色控制器
  * Class CrmRoleController
  * @package App\Http\Controllers\Management\Proxy\Rbac
+ * 
+ * ============================================================================
+ * 路由配置 (routes/management/proxy/crm_rbac/role.php)
+ * ============================================================================
+ * 路由前缀: crm-rbac/role
+ * 命名空间: CrmRbac
+ * 中间件: auth:jwt-management
+ * 
+ * 路由列表:
+ * POST /crm-rbac/role/store
+ *   - 方法: store(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_STORE
+ *   - 说明: 存储角色（需要name, remark参数）
+ * 
+ * POST /crm-rbac/role/copy
+ *   - 方法: copy(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_COPY
+ *   - 说明: 复制角色（需要role_no, name, remark参数）
+ * 
+ * GET  /crm-rbac/role/detail
+ *   - 方法: detail(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_DETAIL
+ *   - 说明: 获取角色详情（需要role_no参数，必填）
+ * 
+ * GET  /crm-rbac/role/page-list
+ *   - 方法: getPageList(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_PAGE_LIST
+ *   - 说明: 角色分页列表
+ * 
+ * GET  /crm-rbac/role/select-list
+ *   - 方法: selectList(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_SELECT_LIST
+ *   - 说明: 角色下拉选择列表
+ * 
+ * POST /crm-rbac/role/update
+ *   - 方法: update(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_UPDATE
+ *   - 说明: 修改角色信息（需要role_no, name, remark参数）
+ * 
+ * POST /crm-rbac/role/batch-set-user-role
+ *   - 方法: batchSetUserRole(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_BATCH_SET_USER_ROLE
+ *   - 说明: 批量更新在职员工角色（需要role_no, role_user_no参数）
+ * 
+ * POST /crm-rbac/role/delete
+ *   - 方法: delete(Request $request, CrmRoleBusiness $business)
+ *   - 路由名称: MANAGEMENT_CRM_RBAC_ROLE_DELETE
+ *   - 说明: 删除角色
+ * ============================================================================
  */
 class CrmRoleController extends BaseController
 {

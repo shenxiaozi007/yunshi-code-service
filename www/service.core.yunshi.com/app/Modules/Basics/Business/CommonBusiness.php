@@ -33,7 +33,7 @@ class CommonBusiness extends BaseBusiness
         $response = [];
 
         $response['timezone'] = date_default_timezone_get();
-        $response['now'] = get_now();
+        $response['now'] = \get_now();
 
         return $response;
     }

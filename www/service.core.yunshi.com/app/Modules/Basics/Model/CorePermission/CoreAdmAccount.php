@@ -86,8 +86,7 @@ class CoreAdmAccount extends Model
      */
     public function getAccountStatusAttribute($value)
     {
-        if (filled($value))
-        {
+        if (filled($value)) {
             $this->append('account_status_str');
         }
 
@@ -110,8 +109,7 @@ class CoreAdmAccount extends Model
      */
     public function getAvatarIdAttribute($value)
     {
-        if (filled($value))
-        {
+        if (filled($value)) {
             $this->append('avatar_url');
         }
         return $value;
@@ -151,8 +149,7 @@ class CoreAdmAccount extends Model
     public function getRoleIdAttribute($value)
     {
         // 超管，造个假数据，前端显示用
-        if ($value == 0)
-        {
+        if ($value == 0) {
             $now = get_now();
 
             $data = [
@@ -336,7 +333,7 @@ class CoreAdmAccount extends Model
      */
     public function bindCrmUser(): BelongsTo
     {
-        return $this->belongsTo(CrmUser::class, 'bind_crm_user_no','user_no');
+        return $this->belongsTo(CrmUser::class, 'bind_crm_user_no', 'user_no');
     }
 
     /**
@@ -367,7 +364,7 @@ class CoreAdmAccount extends Model
      */
     public function setCfyfManageCompanyNosAttribute($companyNos)
     {
-        $companyNos = array_map(function($v){
+        $companyNos = array_map(function ($v) {
             return $v;
         }, array_filter($companyNos));
 
@@ -381,8 +378,7 @@ class CoreAdmAccount extends Model
      */
     public function getCfyfManageCompanyNosAttribute($value)
     {
-        if (is_null($value))
-        {
+        if (is_null($value)) {
             return [];
         }
 
@@ -406,5 +402,4 @@ class CoreAdmAccount extends Model
     {
         return ((int) $this->cfyf_is_manage_specific_company) === YesOrNo::YES;
     }
-
 }
