@@ -4,7 +4,6 @@ namespace App\Modules\Basics\Model\Sales;
 
 use App\Kernel\Traits\ModelMainNoTrait;
 use App\Kernel\Traits\ModelTimeTraits;
-use App\Modules\Basics\Model\CfyfService\Sales\CfyfUser;
 use App\Modules\Basics\Model\CrmPermission\CrmUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property CrmUser crmUser
- * @property CfyfUser cfyfUser
  */
 class CoreSales extends Model
 {
