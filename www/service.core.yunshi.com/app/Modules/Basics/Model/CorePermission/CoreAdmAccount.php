@@ -7,7 +7,6 @@ use App\Modules\Basics\Constant\Common\SuperAdministratorRole;
 use App\Modules\Basics\Constant\Common\YesOrNo;
 use App\Modules\Basics\Constant\Sales\AccountStatus;
 use App\Modules\Basics\Model\CrmPermission\CrmUser;
-use App\Modules\Basics\Model\CrmPermission\CoreHeadquartersDepartment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,7 +36,7 @@ class CoreAdmAccount extends Model
      * 表名
      * @var string
      */
-    protected $table = 'core_adm_account';
+    protected $table = 'ycore_adm_account';
 
     /**
      * @var array

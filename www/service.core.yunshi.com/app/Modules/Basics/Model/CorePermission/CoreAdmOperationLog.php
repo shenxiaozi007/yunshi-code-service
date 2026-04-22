@@ -16,7 +16,7 @@ class CoreAdmOperationLog extends Model
     /**
      * @var string
      */
-    protected $table = 'core_adm_operation_log';
+    protected $table = 'ycore_adm_operation_log';
 
     /**
      * @var array

@@ -40,21 +40,19 @@ class RouteServiceProvider extends ServiceProvider
                 'middleware' => [
                     'cors',
                     'management.rbac',
-                    'hide_non_broker',
-                    'record.log',
+                     //todo    #需要mongodb后续完善
+                    // 'record.log',
                 ],
                 'files'      => [
                     'routes/management/proxy/rbac/sys_permission_group.php',
                     'routes/management/proxy/rbac/sys_permission.php',
-                    'routes/management/proxy/rbac/sys_report_permission.php',
                     'routes/management/proxy/rbac/sys_role.php',
                     'routes/management/proxy/rbac/sys_role_permission_relation.php',
                     'routes/management/proxy/rbac/sys_user.php',
                     'routes/management/proxy/crm_rbac/role.php',
                     'routes/management/proxy/crm_rbac/user.php',
                     'routes/management/proxy/crm_rbac/permission_group.php',
-                    'routes/management/proxy/crm_rbac/report_permission_group.php',
-                    'routes/management/proxy/crm_rbac/role_permission_relation.php',
+                    'routes/management/proxy/crm_rbac/role_permission_relation.php'
                 ],
             ],
         ],

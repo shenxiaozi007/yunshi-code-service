@@ -19,22 +19,10 @@ $router->group(['prefix' => 'rbac/sys-user', 'namespace' => 'Rbac'], function ($
         'uses' => 'SysUserController@login',
     ]);
 
-    // 登录图形验证码
-    $router->get('login-captcha-image', [
-        'as'   => WebRoute::AUTH_NEEDLESS,
-        'uses' => 'SysUserController@getLoginCaptchaImage',
-    ]);
-
     // 获取登录用户信息
     $router->post('get-login-info', [
         'as'   => WebRoute::AUTH_NEEDLESS,
         'uses' => 'SysUserController@getLoginInfo',
-    ]);
-
-    // 发送手机验证码
-    $router->post('send-mobile-captcha', [
-        'as'   => WebRoute::AUTH_NEEDLESS,
-        'uses' => 'SysUserController@sendMobileCaptcha',
     ]);
 
     // 下拉列表
