@@ -13,8 +13,6 @@ trait SecretDataTrait
      * @param string $secretType
      * @param string $webRoute
      * @return array
-     * @author 秦昊
-     * Date: 2021/7/19 19:43
      */
     public function getSecretAttrs(string $secretType, string $webRoute): array
     {
@@ -29,8 +27,6 @@ trait SecretDataTrait
      * @param $data
      * @param string $secretType 加密级别
      * @return array
-     * @author 秦昊
-     * Date: 2021/7/18 14:06
      */
     public function secretData($data, string $secretType): array
     {
@@ -70,8 +66,6 @@ trait SecretDataTrait
      * @param array $data
      * @param array $secretAttrs
      * @return array
-     * @author 秦昊
-     * Date: 2021/7/18 18:11
      */
     private function secretWithConfig(array $data, array $secretAttrs): array
     {
@@ -99,8 +93,6 @@ trait SecretDataTrait
      * @param array $data
      * @param $attrKey
      * @param $attrValue
-     * @author 秦昊
-     * Date: 2021/7/23 15:50
      */
     private function secretWithAttrs(array &$data, $attrKey, $attrValue)
     {
@@ -129,8 +121,6 @@ trait SecretDataTrait
      * @param $data
      * @param $attrValue
      * @param $dataKey
-     * @author 秦昊
-     * Date: 2021/7/22 23:38
      */
     private function secretWithAttrStr(&$data, $dataKey, $attrValue)
     {
@@ -167,8 +157,6 @@ trait SecretDataTrait
      * @param $obj
      * @param $attrValue
      * @return bool
-     * @author 秦昊
-     * Date: 2021/7/19 10:03
      */
     private function secretObjWithAttrStr(&$obj, $attrValue): bool
     {
@@ -191,8 +179,6 @@ trait SecretDataTrait
      * @param $attrKey
      * @param $attrValueArr
      * @return bool
-     * @author 秦昊
-     * Date: 2021/7/19 09:44
      */
     private function secretObjWithAttrs(&$obj, $attrKey, $attrValueArr): bool
     {
@@ -220,8 +206,6 @@ trait SecretDataTrait
      * @param array $arr
      * @param string $secretType
      * @return array
-     * @author 秦昊
-     * Date: 2021/7/18 14:06
      */
     private function secretArr(array $arr, string $secretType): array
     {
@@ -269,8 +253,6 @@ trait SecretDataTrait
      * @param array|null $hidePolicyDataAttrArr
      * @param string|null $secretType
      * @return string
-     * @author 秦昊
-     * Date: 2021/7/18 14:05
      */
     private function secretValue($obj, string $key, array $hidePolicyDataAttrArr = null, string $secretType = null): string
     {
@@ -300,8 +282,6 @@ trait SecretDataTrait
      * @param $key
      * @param array|null $hidePolicyDataAttrArr
      * @return ?string
-     * @author 秦昊
-     * Date: 2021/7/23 15:21
      */
     private function getCurHidePolicyDataType($key, array $hidePolicyDataAttrArr = null): ?string
     {

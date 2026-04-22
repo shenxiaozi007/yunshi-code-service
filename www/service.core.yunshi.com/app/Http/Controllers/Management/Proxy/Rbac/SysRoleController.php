@@ -87,8 +87,6 @@ class SysRoleController extends BaseController
      * @param CoreRoleBusiness $sysRoleBusiness
      * @return array|JsonResponse|null
      * @throws AppException
-     * @author 秦昊
-     * Date: 2021/8/26 10:28
      */
     public function detail(Request $request, CoreRoleBusiness $sysRoleBusiness)
     {

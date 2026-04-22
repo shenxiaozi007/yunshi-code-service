@@ -132,8 +132,6 @@ abstract class BaseDao
      * @param array $rows
      * @param $chunkSize
      * @return bool
-     * @author 秦昊
-     * Date: 2019-03-01 16:00
      */
     public function insertMulti(array $rows, $chunkSize = 200): bool
     {
@@ -499,8 +497,6 @@ abstract class BaseDao
      * @param string $column
      * @return int|mixed
      * @throws AppException
-     * @author 秦昊
-     * Date: 2021/11/9 16:43
      */
     public function sumByParams(array $params, string $column)
     {

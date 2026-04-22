@@ -10,18 +10,12 @@ use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-/**
- * @author 秦昊
- * Date: 2021/11/2 20:44
- */
 class RecordWebRouteLog
 {
     /**
      * @param Request $request
      * @param Closure $next
      * @return mixed
-     * @author 秦昊
-     * Date: 2021/11/2 20:46
      */
     public function handle(Request $request, Closure $next)
     {

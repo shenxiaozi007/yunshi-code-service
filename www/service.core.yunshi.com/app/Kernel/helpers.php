@@ -84,8 +84,6 @@ if (!function_exists('check_time'))
      *
      * @param $time
      * @return bool
-     * @author 秦昊
-     * Date: 2019-06-10 16:26
      */
     function check_time($time)
     {
@@ -115,8 +113,6 @@ if (!function_exists('get_file_ext'))
      *
      * @param $path
      * @return string
-     * @author 秦昊
-     * Date: 2019-06-10 16:26
      */
     function get_file_ext($path)
     {
@@ -493,8 +489,6 @@ if (!function_exists('csv_export'))
      * @param $fileName
      * @param array $data 导出数据
      * @param array $headList 第一行,列名
-     * @author 秦昊
-     * Date: 2018/11/30 17:15
      */
     function csv_export($fileName, array $data = [], array $headList = [])
     {
@@ -807,7 +801,6 @@ if(!function_exists('get_file_absolute_path'))
 {
     /**
      * 获取文件的绝对路径，相当当前项目目录而言
-     * @author kkk
      * @param string $file 相对项目根目录的文件路径
      * @return string
      */
@@ -829,7 +822,6 @@ if(!function_exists('get_files'))
      * @param string $file 相对项目根目录的文件路径
      * @param int $sorting_order
      * @return array
-     * @author kkk
      */
     function get_files(string $file, int $sorting_order = SCANDIR_SORT_ASCENDING) :array
     {

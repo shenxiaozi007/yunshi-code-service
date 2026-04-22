@@ -315,8 +315,6 @@ class CrmUser extends BaseModel
      *
      * @param Builder $query
      * @param $value
-     * @author 秦昊
-     * Date: 2021/9/6 20:52
      */
     public function scopeCompanyIdQuery(Builder $query, $value): void
     {
@@ -397,7 +395,6 @@ class CrmUser extends BaseModel
      * 旧系统代理人id
      * @param Builder $query
      * @param $value
-     * @author leo 2023/1/18
      */
     public function scopeOldAgentIdQuery(Builder $query, $value)
     {

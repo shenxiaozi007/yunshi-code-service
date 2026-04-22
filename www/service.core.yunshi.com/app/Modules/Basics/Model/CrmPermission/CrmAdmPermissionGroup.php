@@ -96,8 +96,6 @@ class CrmAdmPermissionGroup extends Model
 
     /**
      * @return HasMany
-     * @author 秦昊
-     * Date: 2021/8/25 11:09
      */
     public function permissionGroups()
     {
@@ -107,8 +105,6 @@ class CrmAdmPermissionGroup extends Model
 
     /**
      * @return HasMany
-     * @author 秦昊
-     * Date: 2021/8/25 11:09
      */
     public function permissions()
     {

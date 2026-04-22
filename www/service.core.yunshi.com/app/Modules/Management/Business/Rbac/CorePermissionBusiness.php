@@ -67,8 +67,6 @@ class CorePermissionBusiness extends BaseBusiness
      * @param string $encrypt
      * @param array $responseContent
      * @return array
-     * @author 秦昊
-     * Date: 2021/9/22 14:11
      */
     public function getEncryptResponseContent(string $encrypt, array $responseContent): array
     {
@@ -82,8 +80,6 @@ class CorePermissionBusiness extends BaseBusiness
      * @param string $path
      * @return false|string
      * @throws AppException
-     * @author 秦昊
-     * Date: 2021/9/10 16:41
      */
     public function getEncrypt(int $sysUserId, string $path): bool|string
     {

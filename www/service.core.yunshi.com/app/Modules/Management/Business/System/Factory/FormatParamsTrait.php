@@ -4,17 +4,11 @@ namespace App\Modules\Management\Business\System\Factory;
 
 use Carbon\Carbon;
 
-/**
- * @author 秦昊
- * Date: 2022/1/19 14:14
- */
 trait FormatParamsTrait
 {
     /**
      * @param array $params
      * @return array
-     * @author 秦昊
-     * Date: 2022/1/19 14:15
      */
     public function formatParams(array $params = [])
     {

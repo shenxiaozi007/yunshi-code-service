@@ -54,8 +54,6 @@ class CoreAdmRole extends Model
      *
      * @param Builder $query
      * @param $value
-     * @author 秦昊
-     * Date: 2021/8/25 19:55
      */
     public function scopeNameLikeQuery(Builder $query, $value): void
     {

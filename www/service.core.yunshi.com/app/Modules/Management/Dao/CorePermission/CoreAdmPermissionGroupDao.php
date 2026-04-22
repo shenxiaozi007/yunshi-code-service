@@ -38,8 +38,6 @@ class CoreAdmPermissionGroupDao extends BaseDao
      *
      * @param string $aliasName
      * @return Model|object|static|null
-     * @author 秦昊
-     * Date: 2021/8/25 11:38
      */
     public function findByAliasName(string $aliasName)
     {

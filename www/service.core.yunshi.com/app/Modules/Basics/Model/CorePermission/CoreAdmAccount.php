@@ -204,8 +204,6 @@ class CoreAdmAccount extends Model
      *
      * @param Builder $query
      * @param $value
-     * @author 秦昊
-     * Date: 2021/9/14 11:24
      */
     public function scopeMobileLikeQuery(Builder $query, $value): void
     {
@@ -318,8 +316,6 @@ class CoreAdmAccount extends Model
      * 关联accountAuth
      *
      * @return HasOne
-     * @author 秦昊
-     * Date: 2021/9/13 14:10
      */
     public function accountAuth()
     {

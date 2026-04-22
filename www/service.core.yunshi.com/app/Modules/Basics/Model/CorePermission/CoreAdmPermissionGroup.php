@@ -94,8 +94,6 @@ class CoreAdmPermissionGroup extends Model
 
     /**
      * @return HasMany
-     * @author 秦昊
-     * Date: 2021/8/25 11:09
      */
     public function permissionGroups()
     {
@@ -105,8 +103,6 @@ class CoreAdmPermissionGroup extends Model
 
     /**
      * @return HasMany
-     * @author 秦昊
-     * Date: 2021/8/25 11:09
      */
     public function permissions()
     {

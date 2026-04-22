@@ -70,8 +70,6 @@ class CoreSales extends Model
      *
      * @param Builder $query
      * @param $value
-     * @author 秦昊
-     * Date: 2021/9/3 14:15
      */
     public function scopeSourceUserIdQuery(Builder $query, $value): void
     {
@@ -82,8 +80,6 @@ class CoreSales extends Model
      * 查詢工號
      * @param Builder $query
      * @param $value
-     * @author hxc
-     * @date 2023-01-29 19:52
      */
     public function scopeJobSnQuery(Builder $query, $value): void
     {
@@ -106,7 +102,6 @@ class CoreSales extends Model
      * 工号
      * @param Builder $query
      * @param $value
-     * @author leo 2023/1/17
      */
     public function scopeJobSnArrQuery(Builder $query, $value): void
     {
@@ -116,7 +111,6 @@ class CoreSales extends Model
     /**
      * crm用户
      * @return HasOne
-     * @author leo 2023/1/17
      */
     public function crmUser(): HasOne
     {

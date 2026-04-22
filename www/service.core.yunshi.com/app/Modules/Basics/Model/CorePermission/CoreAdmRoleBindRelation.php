@@ -76,8 +76,6 @@ class CoreAdmRoleBindRelation extends Model
      * 关联权限
      *
      * @return BelongsTo
-     * @author 秦昊
-     * Date: 2021/8/25 11:12
      */
     public function sysPermission()
     {

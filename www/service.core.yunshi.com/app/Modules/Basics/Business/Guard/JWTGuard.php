@@ -401,8 +401,6 @@ abstract class JWTGuard implements Guard
     /**
      * 清理所有用户的全部token
      *
-     * @author 秦昊
-     * Date: 2018/10/9 13:02
      */
     public function clearAllToken()
     {
@@ -416,8 +414,6 @@ abstract class JWTGuard implements Guard
     /**
      * 根据关键词模糊匹配删除
      *
-     * @author 秦昊
-     * Date: 2018/10/9 13:15
      * @param $keyWord
      */
     protected function clearKeysByKeyWord($keyWord)
