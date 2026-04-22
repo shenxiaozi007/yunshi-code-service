@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ycode_headquarters_department', function (Blueprint $table) {
+        Schema::create('ycore_headquarters_department', function (Blueprint $table) {
             $table->comment('核心系统-总部部门');
             $table->increments('id');
             $table->string('department_no', 64)->default('')->comment('部门编号')->unique();
@@ -38,6 +38,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('ycode_headquarters_department');
+        Schema::dropIfExists('ycore_headquarters_department');
     }
 };

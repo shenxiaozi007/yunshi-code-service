@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ycode_adm_permission', function (Blueprint $table) {
+        Schema::create('ycore_adm_permission', function (Blueprint $table) {
             $table->comment('核心系统-权限');
             $table->increments('id');
             $table->string('permission_no', 64)->default('')->comment('权限编号')->unique();
@@ -31,6 +31,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('ycode_adm_permission');
+        Schema::dropIfExists('ycore_adm_permission');
     }
 };

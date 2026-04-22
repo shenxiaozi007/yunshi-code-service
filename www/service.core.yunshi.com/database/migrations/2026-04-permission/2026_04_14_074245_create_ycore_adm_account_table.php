@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ycode_adm_account', function (Blueprint $table) {
+        Schema::create('ycore_adm_account', function (Blueprint $table) {
             $table->comment('核心系统-管理员账户');
             $table->increments('id');
             $table->string('account_no', 64)->default('')->comment('用户编号')->unique();
@@ -32,6 +32,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('ycode_adm_account');
+        Schema::dropIfExists('ycore_adm_account');
     }
 };

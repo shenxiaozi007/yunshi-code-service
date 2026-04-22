@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ycode_adm_account_bind_role', function (Blueprint $table) {
+        Schema::create('ycore_adm_account_bind_role', function (Blueprint $table) {
             $table->comment('核心系统-管理员绑定角色');
             $table->increments('id');
             $table->string('adm_account_bind_role_no', 64)->default('')->comment('关系编号')->unique();
@@ -28,6 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('ycode_adm_account_bind_role');
+        Schema::dropIfExists('ycore_adm_account_bind_role');
     }
 };

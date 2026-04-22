@@ -8,12 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ycode_adm_account_bind_crm_log', function (Blueprint $table) {
+        Schema::create('ycore_adm_account_bind_crm_log', function (Blueprint $table) {
             $table->comment('核心系统-管理员绑定crm用户操作记录');
             $table->bigIncrements('id');
             $table->string('log_no', 64)->default('')->comment('日志编号')->unique();
-            $table->string('ycode_account_no', 64)->default('')->comment('对应ycode_account_no')->index();
-            $table->string('ycode_real_name', 64)->default('')->comment('真实姓名');
+            $table->string('ycore_account_no', 64)->default('')->comment('对应ycore_account_no')->index();
+            $table->string('ycore_real_name', 64)->default('')->comment('真实姓名');
             $table->string('ycrm_user_no', 64)->default('')->comment('绑定的crm账户编号')->index();
             $table->string('ycrm_user_real_name', 64)->default('')->comment('绑定的crm账户真实姓名');
             $table->string('action', 32)->default('')->comment('动作：绑定，解绑');
@@ -29,6 +29,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('ycode_adm_account_bind_crm_log');
+        Schema::dropIfExists('ycore_adm_account_bind_crm_log');
     }
 };

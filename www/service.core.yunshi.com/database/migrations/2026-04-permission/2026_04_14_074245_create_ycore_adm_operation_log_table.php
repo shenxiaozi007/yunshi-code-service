@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ycode_adm_operation_log', function (Blueprint $table) {
+        Schema::create('ycore_adm_operation_log', function (Blueprint $table) {
             $table->comment('核心系统-用户登录日志');
             $table->increments('id');
             $table->string('operation_log_no', 64)->default('')->comment('日志编号')->unique();
@@ -32,6 +32,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('ycode_adm_operation_log');
+        Schema::dropIfExists('ycore_adm_operation_log');
     }
 };
