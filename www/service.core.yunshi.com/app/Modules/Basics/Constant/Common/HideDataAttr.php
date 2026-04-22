@@ -100,8 +100,6 @@ class HideDataAttr extends BaseConstant
 
     /**
      * @return array
-     * @author 秦昊
-     * Date: 2021/7/9 17:41
      */
     public static function getNames(): array
     {
