@@ -20,7 +20,7 @@ class CoreAdmAccountBindCrmLog extends Model
      * 表名
      * @var string
      */
-    protected $table = 'core_adm_account_bind_crm_log';
+    protected $table = 'ycore_adm_account_bind_crm_log';
 
     /**
      * @var array

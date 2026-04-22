@@ -21,7 +21,7 @@ class CrmUserAuth extends Model
      * 表名
      * @var string
      */
-    protected $table = 'crm_user_auth';
+    protected $table = 'ycrm_user_auth';
 
     /**
      * @var array

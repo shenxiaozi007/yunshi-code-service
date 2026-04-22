@@ -22,7 +22,7 @@ class CoreAdmRoleBindRelation extends Model
      * 表名
      * @var string
      */
-    protected $table = 'core_adm_role_bind_relation';
+    protected $table = 'ycore_adm_role_bind_relation';
 
     /**
      * @var array

@@ -21,7 +21,7 @@ class CoreAdmRole extends Model
      * 表名
      * @var string
      */
-    protected $table = 'core_adm_role';
+    protected $table = 'ycore_adm_role';
 
     /**
      * @var array

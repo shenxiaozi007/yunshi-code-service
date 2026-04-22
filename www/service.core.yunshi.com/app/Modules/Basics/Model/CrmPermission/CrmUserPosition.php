@@ -22,7 +22,7 @@ class CrmUserPosition extends Model
      * 表名
      * @var string
      */
-    protected $table = 'crm_user_position';
+    protected $table = 'ycrm_user_position';
 
     /**
      * @var array

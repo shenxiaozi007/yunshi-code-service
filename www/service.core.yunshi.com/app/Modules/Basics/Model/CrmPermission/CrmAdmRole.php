@@ -27,7 +27,7 @@ class CrmAdmRole extends Model
      * 表名
      * @var string
      */
-    protected $table = 'crm_adm_role';
+    protected $table = 'ycrm_adm_role';
 
     /**
      * @var array

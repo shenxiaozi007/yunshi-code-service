@@ -20,7 +20,7 @@ class CrmRolePermissionBatchSetLog extends Model
      * 表名
      * @var string
      */
-    protected $table = 'crm_role_permission_batch_set_log';
+    protected $table = 'ycrm_role_permission_batch_set_log';
 
     protected $casts = [
         'role_nos'       => 'array',

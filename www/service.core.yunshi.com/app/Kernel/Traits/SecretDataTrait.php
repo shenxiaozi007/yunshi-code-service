@@ -2,7 +2,7 @@
 
 namespace App\Kernel\Traits;
 
-use App\Modules\Basics\Constant\Common\HidePolicyDataAttr;
+use App\Modules\Basics\Constant\Common\HideDataAttr;
 use App\Modules\Basics\Constant\Rbac\EncryptionOption;
 
 trait SecretDataTrait
@@ -218,25 +218,25 @@ trait SecretDataTrait
             else
             {
                 // 若key值为需加密的字段，则进行加密操作
-                if (is_string($key) && ends_with($key, HidePolicyDataAttr::showNone()))
+                if (is_string($key) && ends_with($key, HideDataAttr::showNone()))
                 {
-                    $hidePolicyDataAttrArr = HidePolicyDataAttr::showNone();
+                    $HideDataAttrArr = HideDataAttr::showNone();
                     // 根据加密类型，获取需要加密的字段列表
                     switch ($secretType)
                     {
                         case EncryptionOption::SHOW_NONE:
-                            $hidePolicyDataAttrArr = HidePolicyDataAttr::showNone();
+                            $HideDataAttrArr = HideDataAttr::showNone();
                             break;
 
                         case EncryptionOption::SHOW_PART:
-                            $hidePolicyDataAttrArr = HidePolicyDataAttr::showMobile();
+                            $HideDataAttrArr = HideDataAttr::showMobile();
                             break;
 
                         default:
                             break;
                     }
 
-                    $item = $this->secretValue($item, $key, $hidePolicyDataAttrArr);
+                    $item = $this->secretValue($item, $key, $HideDataAttrArr);
                 }
             }
         }
@@ -250,13 +250,13 @@ trait SecretDataTrait
      *
      * @param $obj
      * @param string $key
-     * @param array|null $hidePolicyDataAttrArr
+     * @param array|null $HideDataAttrArr
      * @param string|null $secretType
      * @return string
      */
-    private function secretValue($obj, string $key, array $hidePolicyDataAttrArr = null, string $secretType = null): string
+    private function secretValue($obj, string $key, array $HideDataAttrArr = null, string $secretType = null): string
     {
-        if (filled($hidePolicyDataAttrArr) && !in_array($key, $hidePolicyDataAttrArr))
+        if (filled($HideDataAttrArr) && !in_array($key, $HideDataAttrArr))
         {
             return $obj;
         }
@@ -267,27 +267,27 @@ trait SecretDataTrait
         }
 
         // 当前字段类型
-        $curHidePolicyDataType = $this->getCurHidePolicyDataType($key, $hidePolicyDataAttrArr);
-        if (blank($curHidePolicyDataType))
+        $curHideDataType = $this->getCurHideDataType($key, $HideDataAttrArr);
+        if (blank($curHideDataType))
         {
             return $obj;
         }
 
-        return hide_policy_data($obj, $curHidePolicyDataType);
+        return hide_data($obj, $curHideDataType);
     }
 
     /**
      * 获取当前字段的加密方式
      *
      * @param $key
-     * @param array|null $hidePolicyDataAttrArr
+     * @param array|null $HideDataAttrArr
      * @return ?string
      */
-    private function getCurHidePolicyDataType($key, array $hidePolicyDataAttrArr = null): ?string
+    private function getCurHideDataType($key, array $HideDataAttrArr = null): ?string
     {
-        if (blank($hidePolicyDataAttrArr))
+        if (blank($HideDataAttrArr))
         {
-            $hidePolicyDataAttrArr = HidePolicyDataAttr::showNone();
+            $HideDataAttrArr = HideDataAttr::showNone();
         }
 
         if ($pos = strpos($key, '.'))
@@ -296,21 +296,21 @@ trait SecretDataTrait
         }
 
         // 先直接匹配加密规则
-        $curHidePolicyDataType = array_get(HidePolicyDataAttr::getAttrDataMap(), $key);
+        $curHideDataType = array_get(HideDataAttr::getAttrDataMap(), $key);
 
         // 直接匹配不到时，使用后缀模糊匹配
-        if ($curHidePolicyDataType == null)
+        if ($curHideDataType == null)
         {
-            foreach ($hidePolicyDataAttrArr as $hidePolicyDataAttr)
+            foreach ($HideDataAttrArr as $HideDataAttr)
             {
-                if (ends_with($key, $hidePolicyDataAttr))
+                if (ends_with($key, $HideDataAttr))
                 {
-                    $curHidePolicyDataType = array_get(HidePolicyDataAttr::getAttrDataMap(), $hidePolicyDataAttr);
+                    $curHideDataType = array_get(HideDataAttr::getAttrDataMap(), $HideDataAttr);
                     break;
                 }
             }
         }
 
-        return $curHidePolicyDataType;
+        return $curHideDataType;
     }
 }

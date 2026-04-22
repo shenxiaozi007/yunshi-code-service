@@ -21,7 +21,7 @@ class CoreAdmAccountAuth extends Model
      * 表名
      * @var string
      */
-    protected $table = 'core_adm_account_auth';
+    protected $table = 'ycore_adm_account_auth';
 
     /**
      * @var array

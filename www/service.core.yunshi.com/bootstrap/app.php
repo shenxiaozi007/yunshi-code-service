@@ -98,6 +98,7 @@ $app->routeMiddleware([
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
 $app->register(App\Providers\ConfigServiceProvider::class);
 $app->register(App\Providers\RouteServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);

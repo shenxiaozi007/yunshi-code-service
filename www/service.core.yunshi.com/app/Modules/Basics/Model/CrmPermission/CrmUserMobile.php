@@ -20,7 +20,7 @@ class CrmUserMobile extends Model
 {
     use SoftDeletes, ModelTimeTraits, ModelMainNoTrait;
 
-    protected $table = 'crm_user_mobile';
+    protected $table = 'ycrm_user_mobile';
 
     protected $fillable = [
         'last_update_time',

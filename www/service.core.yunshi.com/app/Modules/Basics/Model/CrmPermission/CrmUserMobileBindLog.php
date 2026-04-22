@@ -20,7 +20,7 @@ class CrmUserMobileBindLog extends BaseModel
      * 表名
      * @var string
      */
-    protected $table = 'crm_user_mobile_bind_log';
+    protected $table = 'ycrm_user_mobile_bind_log';
 
     protected $guarded = [];
 }

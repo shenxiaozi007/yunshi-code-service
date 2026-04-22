@@ -10,33 +10,7 @@ use App\Modules\Basics\Constant\Rbac\WebRoute;
 
 $permissionArr = [
 
-   // ###################### 下载中心 start ######################
-    [
-        'name'              => '个人报表中心列表',
-        'group_alias'       => 'download_center',
-        'alias_name'        => 'download_center.get_page_list',
-        'is_init'           => YesOrNo::YES,
-        'client_route_name' => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_DOWNLOAD_CENTER_GET_PAGE_LIST),
-        ],
-        'proxy_route_name'  => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_DOWNLOAD_CENTER_GET_PAGE_LIST),
-            get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_DOWNLOAD_CENTER_GET_NOT_REMIND_LIST),
-            get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_DOWNLOAD_CENTER_UPDATE_REMIND_STATUS),
-        ],
-    ],
-    [
-        'name'              => '个人报表中心-下载',
-        'group_alias'       => 'download_center',
-        'alias_name'        => 'download_center.download',
-        'is_init'           => YesOrNo::YES,
-        'client_route_name' => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_DOWNLOAD_CENTER_DOWNLOAD),
-        ],
-        'proxy_route_name'  => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_DOWNLOAD_CENTER_DOWNLOAD),
-        ],
-    ],
+   // ###################### 管理中心 start ######################
     [
         'name'              => '管理CRM',
         'group_alias'       => 'home_page',
@@ -49,7 +23,7 @@ $permissionArr = [
             get_route_real_name(WebRoute::MANAGEMENT_SYSTEM_ACTION_CRM_SYSTEM),
         ],
     ],
-    // ###################### 下载中心 end ######################
+    // ###################### 管理中心 end ######################
 
     // ###################### 成员管理 start ######################
     [
@@ -138,33 +112,6 @@ $permissionArr = [
             get_route_real_name(WebRoute::MANAGEMENT_SYS_USER_FORCE_LOGOUT_BY_ACCOUNT),
         ],
     ],
-
-    [
-        'name'              => '插件开关设置',
-        'group_alias'       => 'manager_members',
-        'alias_name'        => 'sys_user.save_extension_status',
-        'is_init'           => YesOrNo::YES,
-        'client_route_name' => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS),
-        ],
-        'proxy_route_name'  => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS),
-        ],
-    ],
-
-    [
-        'name'              => '设置内部管理员细分管理外部公司',
-        'group_alias'       => 'manager_members',
-        'alias_name'        => 'sys_user.set_manage_specific_company',
-        'is_init'           => YesOrNo::YES,
-        'client_route_name' => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY),
-        ],
-        'proxy_route_name'  => [
-            get_route_real_name(WebRoute::MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY),
-        ],
-    ],
-
 
     // ###################### 成员管理 end ######################
 

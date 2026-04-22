@@ -21,7 +21,7 @@ class CrmAdmPermissionGroup extends Model
      * 表名
      * @var string
      */
-    protected $table = 'crm_adm_permission_group';
+    protected $table = 'ycrm_adm_permission_group';
 
     /**
      * @var array

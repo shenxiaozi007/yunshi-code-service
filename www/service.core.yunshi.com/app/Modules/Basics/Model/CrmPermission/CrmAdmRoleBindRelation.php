@@ -23,7 +23,7 @@ class CrmAdmRoleBindRelation extends Model
      * 表名
      * @var string
      */
-    protected $table = 'crm_adm_role_bind_relation';
+    protected $table = 'ycrm_adm_role_bind_relation';
 
     /**
      * @var array

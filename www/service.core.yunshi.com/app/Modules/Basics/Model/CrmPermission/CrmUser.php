@@ -52,7 +52,7 @@ class CrmUser extends BaseModel
      * 表名
      * @var string
      */
-    protected $table = 'crm_user';
+    protected $table = 'ycrm_user';
 
     /**
      * @var array

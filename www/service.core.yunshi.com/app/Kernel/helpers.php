@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\Basics\Constant\Common\Gender;
+use App\Modules\Basics\Constant\Common\HideDataAttr;
 use App\Modules\Basics\Constant\Insurance\RetainDecimalMethod;
 use Carbon\Carbon;
 use Laravel\Lumen\Routing\Router;
@@ -1068,5 +1069,87 @@ if (!function_exists('recognize_id_card')) {
         }
 
         return [];
+    }
+}
+
+if (!function_exists('calculate_age'))
+{
+    /**
+     * 根据日期计算年龄
+     *
+     * @param string $birthday
+     * @param string $format
+     * @return bool|int
+     */
+    function calculate_age(string $birthday, string $format = 'Y-m-d')
+    {
+        if (!Carbon::hasFormat($birthday, $format)) return false;
+
+        $birthday = Carbon::createFromFormat($format, $birthday)->startOfDay();
+        $now      = Carbon::now()->startOfDay();
+
+        return $now->diffInYears($birthday);
+    }
+}
+
+
+if (! function_exists('hide_data'))
+{
+    /**
+     * 保单敏感数据打码
+     *
+     * @param $data
+     * @param $type
+     * @return string
+     */
+    function hide_data($data, $type): string
+    {
+        $len = mb_strlen($data);
+
+        if ($len < 1)
+        {
+            return '';
+        }
+
+        switch ($type)
+        {
+            case HideDataAttr::ID_CARD:
+                // 证件号码 隐藏后四位
+            case HideDataAttr::WX_ID:
+                // 微信号，最后四位打码
+                $count = 4;
+                return mb_substr($data, 0, -1 * $count) . str_repeat('*', $count);
+
+            case HideDataAttr::MOBILE:
+                // 用 * 号替换手机号中间 4 位
+                return hide_phone($data);
+
+            case HideDataAttr::EMAIL:
+                // 邮箱打码，@之前全部打码
+                return preg_replace('/./i', '*', $data, strpos($data, '@') ?: $len);
+
+            case HideDataAttr::CARD_NUMBER:
+                // 银行卡号打码，仅保留后四位
+                $numCount = 4;
+                return preg_replace('/./i', '*', $data, ($len - $numCount) > 0 ? $len - $numCount : 0 );
+
+            case HideDataAttr::WECHAT_ALIAS:
+                // 微信号打码，仅保留后四位，前面不管多长都用四个星号代替
+                return '****' . substr($data, -4);
+
+            case HideDataAttr::CONTACT_ADDRESS:
+                // 地址信息 打码街、单元、座、楼、室、栋、路前面的数字和字母
+                $std = [
+                    '零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖', '拾',
+                    '零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'
+                ];
+
+                $data = str_replace($std, '*', $data);
+
+                return preg_replace('/([a-z0-9]+)/i', '*${2}', $data);
+
+            default:
+                return str_repeat('*', $len);
+        }
     }
 }

@@ -151,13 +151,5 @@ $router->group(['prefix' => 'rbac/sys-user', 'namespace' => 'Rbac'], function ($
                 'uses' => 'SysUserController@forceLogoutByAccount',
             ]
         );
-
-        // 设置内部管理员细分管理外部公司
-        $router->post('set-manage-specific-company',
-            [
-                'as'   => WebRoute::MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY,
-                'uses' => 'SysUserController@setSysUserManageSpecificCompany',
-            ]
-        );
     });
 });

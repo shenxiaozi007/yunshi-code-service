@@ -72,16 +72,4 @@ class BaseRegion extends Model
     {
         return $query->where('pid', $value);
     }
-
-    /**
-     * 不查询国家类型的数据
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeWithoutCountryQuery($query)
-    {
-        return $query->where('type', '<>', RegionType::COUNTRY);
-    }
-
 }

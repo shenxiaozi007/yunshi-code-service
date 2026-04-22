@@ -18,7 +18,7 @@ class CoreAdmPermission extends Model
      * 表名
      * @var string
      */
-    protected $table = 'core_adm_permission';
+    protected $table = 'ycore_adm_permission';
 
     /**
      * @var array

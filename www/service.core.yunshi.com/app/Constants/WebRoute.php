@@ -59,10 +59,6 @@ class WebRoute extends BaseConstant
     const MANAGEMENT_SYS_USER_PASSWORD_EXPIRE_STATUS = 'management.sys_user.password_expire_status`auth_needless`';
     /** 强制退出 **/
     const MANAGEMENT_SYS_USER_FORCE_LOGOUT_BY_ACCOUNT = 'management.sys_user.force_logout_by_account`log`';
-    /** 设置内部管理员细分管理外部公司 */
-    const MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY = 'management.sys_user.set_manage_specific_company`log`';
-    /**启用插件采集状态编辑**/
-    const MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS = 'management.sys_user.save_extension_status`log`';
 
     /** 系统角色 **/
     /** 新增角色 **/

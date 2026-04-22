@@ -123,10 +123,6 @@ class WebRoute extends BaseConstant
     const MANAGEMENT_SYS_USER_PASSWORD_EXPIRE_STATUS = 'management.sys_user.password_expire_status`auth_needless`';
     /** 强制退出 **/
     const MANAGEMENT_SYS_USER_FORCE_LOGOUT_BY_ACCOUNT = 'management.sys_user.force_logout_by_account`log`';
-    /** 设置内部管理员细分管理外部公司 */
-    const MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY = 'management.sys_user.set_manage_specific_company`log`';
-    /**启用插件采集状态编辑**/
-    const MANAGEMENT_SYS_USER_SAVE_EXTENSION_STATUS = 'management.sys_user.save_extension_status`log`';
 
     /** 系统角色 **/
     /** 新增角色 **/
@@ -254,6 +250,16 @@ class WebRoute extends BaseConstant
     /** 职位等级列表 **/
     const MANAGEMENT_CRM_USER_POSITION_GRADE_LIST = 'management.crm_user_position.grade_list`auth_needless`';
     // ========================================= crm销售职位路由 =================================================== //
+
+    // ========================================= 系统管理路由 =================================================== //
+    /** 核心系统操作日志列表 **/
+    const MANAGEMENT_SYSTEM_OPERATION_LOG_GET_PAGE_LIST = 'management.system.operation_log.get_page_list';
+    /** 核心crm系统操作日志列表 **/
+    const MANAGEMENT_SYSTEM_CRM_OPERATION_LOG_GET_PAGE_LIST = 'management.system.crm_operation_log.get_page_list';
+    /** 管理CRM **/
+    const MANAGEMENT_SYSTEM_ACTION_CRM_SYSTEM = 'management.system.action_crm_user`log`';
+    // ========================================= 系统管理路由 =================================================== //
+
     /**
      * @return array
      */
@@ -311,7 +317,6 @@ class WebRoute extends BaseConstant
             self::MANAGEMENT_SYS_USER_BIND_USER                                    => '绑定CRM',
             self::MANAGEMENT_SYS_USER_UNBIND_USER                                  => '解绑CRM',
             self::MANAGEMENT_SYS_USER_FORCE_LOGOUT_BY_ACCOUNT                      => '强制退出',
-            self::MANAGEMENT_SYS_USER_MANAGE_SPECIFIC_COMPANY                      => '设置内部管理员细分管理外部公司',
 
             /** 系统角色 **/
             self::MANAGEMENT_RBAC_SYS_ROLE_STORE                                   => '新增角色',
@@ -373,6 +378,11 @@ class WebRoute extends BaseConstant
             self::MANAGEMENT_CRM_USER_POSITION_DETAIL                           => 'crm销售职位详情',
             self::MANAGEMENT_CRM_USER_POSITION_PAGE_LIST                        => 'crm销售职位列表',
             self::MANAGEMENT_CRM_USER_POSITION_SELECT_LIST                      => 'crm销售职位下拉列表',
+
+            /** 系统管理路由 **/
+            self::MANAGEMENT_SYSTEM_OPERATION_LOG_GET_PAGE_LIST                    => '核心系统操作日志列表',
+            self::MANAGEMENT_SYSTEM_CRM_OPERATION_LOG_GET_PAGE_LIST                => '核心crm系统操作日志列表',
+            self::MANAGEMENT_SYSTEM_ACTION_CRM_SYSTEM                              => '管理CRM',
         ];
     }
 }
