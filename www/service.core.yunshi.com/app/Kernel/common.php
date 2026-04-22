@@ -230,16 +230,3 @@ if(!function_exists('snow_flake_id'))
         return app('Tool\SnowFlake')->id() . '-' . str_random($customizeStrLength);
     }
 }
-
-if (! function_exists('get_now'))
-{
-    /**
-     * 获取当前时间
-     *
-     * @return int
-     */
-    function get_now()
-    {
-        return time();
-    }
-}

@@ -1,0 +1,2142 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Yunshi Management API",
+    "version": "1.0.0",
+    "description": "云石管理后台API文档"
+  },
+  "servers": [
+    {
+      "url": "https://service.core.yunshi.com",
+      "description": "生产环境"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "获取应用版本",
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/store": {
+      "post": {
+        "summary": "添加角色",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "角色名称",
+                    "example": "管理员"
+                  },
+                  "remark": {
+                    "type": "string",
+                    "description": "角色备注",
+                    "example": "系统管理员角色"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "角色信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/copy": {
+      "post": {
+        "summary": "复制角色",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["role_no", "name"],
+                "properties": {
+                  "role_no": {
+                    "type": "string",
+                    "description": "原角色编号",
+                    "example": "ROLE001"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "新角色名称",
+                    "example": "管理员(副本)"
+                  },
+                  "remark": {
+                    "type": "string",
+                    "description": "新角色备注",
+                    "example": "复制的管理员角色"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "空对象"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/detail": {
+      "get": {
+        "summary": "角色详情",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "role_no",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "角色编号",
+            "example": "ROLE001"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "角色详细信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/page-list": {
+      "get": {
+        "summary": "角色列表（分页）",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "页码",
+            "example": 1
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "每页数量",
+            "example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "description": "角色列表"
+                        },
+                        "total": {
+                          "type": "integer",
+                          "description": "总数量"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "当前页码"
+                        },
+                        "page_size": {
+                          "type": "integer",
+                          "description": "每页数量"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/select-list": {
+      "get": {
+        "summary": "角色下拉选择列表",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "角色选择列表"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/update": {
+      "post": {
+        "summary": "更新角色",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["role_no", "name"],
+                "properties": {
+                  "role_no": {
+                    "type": "string",
+                    "description": "角色编号",
+                    "example": "ROLE001"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "角色名称",
+                    "example": "管理员"
+                  },
+                  "remark": {
+                    "type": "string",
+                    "description": "角色备注",
+                    "example": "系统管理员角色"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "null"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/batch-set-user-role": {
+      "post": {
+        "summary": "批量设置员工角色",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["role_no"],
+                "properties": {
+                  "role_no": {
+                    "type": "string",
+                    "description": "角色编号",
+                    "example": "ROLE001"
+                  },
+                  "role_user_no": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "员工编号数组",
+                    "example": ["USER001", "USER002"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "操作结果"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role/delete": {
+      "post": {
+        "summary": "删除角色",
+        "tags": ["CRM RBAC - 角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role_no": {
+                    "type": "string",
+                    "description": "角色编号",
+                    "example": "ROLE001"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "null"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/update": {
+      "post": {
+        "summary": "更新角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role_no": {
+                    "type": "string",
+                    "description": "角色编号",
+                    "example": "ROLE001"
+                  },
+                  "permission_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "description": "权限ID数组",
+                    "example": [1, 2, 3]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/batch-update": {
+      "post": {
+        "summary": "批量更新角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "relations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role_no": {
+                          "type": "string",
+                          "description": "角色编号"
+                        },
+                        "permission_id": {
+                          "type": "integer",
+                          "description": "权限ID"
+                        }
+                      }
+                    },
+                    "description": "角色权限关系数组"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/batch-add": {
+      "post": {
+        "summary": "批量添加角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "relations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role_no": {
+                          "type": "string",
+                          "description": "角色编号"
+                        },
+                        "permission_id": {
+                          "type": "integer",
+                          "description": "权限ID"
+                        }
+                      }
+                    },
+                    "description": "要添加的角色权限关系数组"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/batch-delete": {
+      "post": {
+        "summary": "批量删除角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "relations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role_no": {
+                          "type": "string",
+                          "description": "角色编号"
+                        },
+                        "permission_id": {
+                          "type": "integer",
+                          "description": "权限ID"
+                        }
+                      }
+                    },
+                    "description": "要删除的角色权限关系数组"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/app-update": {
+      "post": {
+        "summary": "应用端更新角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/app-batch-update": {
+      "post": {
+        "summary": "应用端批量更新角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/app-batch-add": {
+      "post": {
+        "summary": "应用端批量添加角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/app-batch-delete": {
+      "post": {
+        "summary": "应用端批量删除角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/role-permission-relation/refresh": {
+      "post": {
+        "summary": "刷新角色权限关系",
+        "tags": ["CRM RBAC - 角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/store": {
+      "post": {
+        "summary": "添加用户",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "description": "账号",
+                    "example": "user001"
+                  },
+                  "real_name": {
+                    "type": "string",
+                    "description": "真实姓名",
+                    "example": "张三"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "description": "手机号",
+                    "example": "13800138000"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "邮箱",
+                    "example": "user@example.com"
+                  },
+                  "company_no": {
+                    "type": "string",
+                    "description": "公司编号",
+                    "example": "COMP001"
+                  },
+                  "department_no": {
+                    "type": "string",
+                    "description": "部门编号",
+                    "example": "DEPT001"
+                  },
+                  "role_no": {
+                    "type": "string",
+                    "description": "角色编号",
+                    "example": "ROLE001"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "用户信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/update": {
+      "post": {
+        "summary": "更新用户",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["user_no"],
+                "properties": {
+                  "user_no": {
+                    "type": "string",
+                    "description": "用户编号",
+                    "example": "USER001"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "description": "手机号",
+                    "example": "13800138000"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "邮箱",
+                    "example": "user@example.com"
+                  },
+                  "register_at": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "注册时间",
+                    "example": "2024-01-01"
+                  },
+                  "company_no": {
+                    "type": "string",
+                    "description": "公司编号",
+                    "example": "COMP001"
+                  },
+                  "department_no": {
+                    "type": "string",
+                    "description": "部门编号",
+                    "example": "DEPT001"
+                  },
+                  "position_id": {
+                    "type": "integer",
+                    "description": "职位ID",
+                    "example": 1
+                  },
+                  "detail": {
+                    "type": "string",
+                    "description": "详细信息",
+                    "example": "用户详情"
+                  },
+                  "contract_type": {
+                    "type": "string",
+                    "description": "合同类型",
+                    "example": "正式"
+                  },
+                  "avatar_id": {
+                    "type": "string",
+                    "description": "头像ID",
+                    "example": "AVATAR001"
+                  },
+                  "identity": {
+                    "type": "string",
+                    "description": "身份标识",
+                    "example": "employee"
+                  },
+                  "ascription_user_no": {
+                    "type": "string",
+                    "description": "归属用户编号",
+                    "example": "USER002"
+                  },
+                  "account": {
+                    "type": "string",
+                    "description": "账号",
+                    "example": "user001"
+                  },
+                  "adviser_is_receive_customer": {
+                    "type": "boolean",
+                    "description": "顾问是否接收客户",
+                    "example": true
+                  },
+                  "expert_is_receive_customer": {
+                    "type": "boolean",
+                    "description": "专家是否接收客户",
+                    "example": false
+                  },
+                  "wxid": {
+                    "type": "string",
+                    "description": "微信ID",
+                    "example": "wx123456"
+                  },
+                  "manpower_type": {
+                    "type": "string",
+                    "description": "人力类型",
+                    "example": "full_time"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "更新结果"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/detail": {
+      "get": {
+        "summary": "用户详情",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "user_no",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "用户编号",
+            "example": "USER001"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "用户详细信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/get-page-list": {
+      "get": {
+        "summary": "用户列表（分页）",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "real_name_like",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "姓名模糊搜索",
+            "example": "张"
+          },
+          {
+            "name": "job_sn_like",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "工号模糊搜索",
+            "example": "001"
+          },
+          {
+            "name": "account_status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "账户状态",
+            "example": "active"
+          },
+          {
+            "name": "company_no",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "公司编号",
+            "example": "COMP001"
+          },
+          {
+            "name": "mobile_like",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "手机号模糊搜索",
+            "example": "138"
+          },
+          {
+            "name": "register_at_start",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "注册开始时间",
+            "example": "2024-01-01"
+          },
+          {
+            "name": "register_at_end",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "注册结束时间",
+            "example": "2024-12-31"
+          },
+          {
+            "name": "resignation_at_start",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "离职开始时间",
+            "example": "2024-01-01"
+          },
+          {
+            "name": "resignation_at_end",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "离职结束时间",
+            "example": "2024-12-31"
+          },
+          {
+            "name": "role_no",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "角色编号",
+            "example": "ROLE001"
+          },
+          {
+            "name": "department_no",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "部门编号",
+            "example": "DEPT001"
+          },
+          {
+            "name": "manpower_type_arr",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "人力类型数组",
+            "example": ["full_time", "part_time"]
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "页码",
+            "example": 1
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "每页数量",
+            "example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "description": "用户列表"
+                        },
+                        "total": {
+                          "type": "integer",
+                          "description": "总数量"
+                        },
+                        "page": {
+                          "type": "integer",
+                          "description": "当前页码"
+                        },
+                        "page_size": {
+                          "type": "integer",
+                          "description": "每页数量"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/select-list": {
+      "get": {
+        "summary": "用户下拉选择列表",
+        "tags": ["CRM RBAC - 用户管理"],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/update-password": {
+      "post": {
+        "summary": "更新用户密码",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/update-role": {
+      "post": {
+        "summary": "更新用户角色",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/dimission": {
+      "post": {
+        "summary": "用户离职",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/generate-auth-link": {
+      "post": {
+        "summary": "生成用户认证链接",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/modify-status": {
+      "post": {
+        "summary": "修改用户状态",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/force-logout": {
+      "get": {
+        "summary": "强制用户登出",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/user/login-log/page-list": {
+      "get": {
+        "summary": "用户登录日志列表",
+        "tags": ["CRM RBAC - 用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/permission-group/detail": {
+      "get": {
+        "summary": "权限组详情",
+        "tags": ["CRM RBAC - 权限组管理"],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/permission-group/permissions": {
+      "get": {
+        "summary": "权限组权限列表",
+        "tags": ["CRM RBAC - 权限组管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/permission-group/app-detail": {
+      "get": {
+        "summary": "应用端权限组详情",
+        "tags": ["CRM RBAC - 权限组管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/crm-rbac/permission-group/app-permissions": {
+      "get": {
+        "summary": "应用端权限组权限列表",
+        "tags": ["CRM RBAC - 权限组管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/store": {
+      "post": {
+        "summary": "添加系统角色",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["role_name", "role_code"],
+                "properties": {
+                  "role_name": {
+                    "type": "string",
+                    "description": "角色名称",
+                    "example": "管理员"
+                  },
+                  "role_code": {
+                    "type": "string",
+                    "description": "角色编码",
+                    "example": "ADMIN"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "角色描述",
+                    "example": "系统管理员角色"
+                  },
+                  "status": {
+                    "type": "integer",
+                    "description": "状态（1启用 0禁用）",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/copy": {
+      "post": {
+        "summary": "复制系统角色",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["role_id", "new_role_name", "new_role_code"],
+                "properties": {
+                  "role_id": {
+                    "type": "integer",
+                    "description": "要复制的角色ID",
+                    "example": 1
+                  },
+                  "new_role_name": {
+                    "type": "string",
+                    "description": "新角色名称",
+                    "example": "管理员（副本）"
+                  },
+                  "new_role_code": {
+                    "type": "string",
+                    "description": "新角色编码",
+                    "example": "ADMIN_COPY"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/detail": {
+      "get": {
+        "summary": "系统角色详情",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "角色ID",
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/page-list": {
+      "get": {
+        "summary": "系统角色列表（分页）",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "页码",
+            "example": 1
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            },
+            "description": "每页数量",
+            "example": 20
+          },
+          {
+            "name": "role_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "角色名称搜索",
+            "example": "管理员"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "状态筛选（1启用 0禁用）",
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/select-list": {
+      "get": {
+        "summary": "系统角色下拉选择列表",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "role_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "角色名称搜索",
+            "example": "管理员"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/update": {
+      "post": {
+        "summary": "更新系统角色",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["role_id"],
+                "properties": {
+                  "role_id": {
+                    "type": "integer",
+                    "description": "角色ID",
+                    "example": 1
+                  },
+                  "role_name": {
+                    "type": "string",
+                    "description": "角色名称",
+                    "example": "管理员"
+                  },
+                  "role_code": {
+                    "type": "string",
+                    "description": "角色编码",
+                    "example": "ADMIN"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "角色描述",
+                    "example": "系统管理员角色"
+                  },
+                  "status": {
+                    "type": "integer",
+                    "description": "状态（1启用 0禁用）",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role/delete": {
+      "get": {
+        "summary": "删除系统角色",
+        "tags": ["RBAC - 系统角色管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "角色ID",
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-permission-group/detail": {
+      "get": {
+        "summary": "系统权限组详情",
+        "tags": ["RBAC - 系统权限组管理"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "权限组ID",
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/login": {
+      "post": {
+        "summary": "系统用户登录",
+        "tags": ["RBAC - 系统用户管理"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["account", "password"],
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "description": "登录账号",
+                    "example": "admin"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "登录密码",
+                    "example": "password123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string",
+                          "description": "JWT令牌",
+                          "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+                        },
+                        "user_info": {
+                          "type": "object",
+                          "description": "用户信息"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/login-captcha-image": {
+      "get": {
+        "summary": "获取登录验证码图片",
+        "tags": ["RBAC - 系统用户管理"],
+        "responses": {
+          "200": {
+            "description": "验证码图片",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/get-login-info": {
+      "post": {
+        "summary": "获取登录信息",
+        "tags": ["RBAC - 系统用户管理"],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/send-mobile-captcha": {
+      "post": {
+        "summary": "发送手机验证码",
+        "tags": ["RBAC - 系统用户管理"],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/select-list": {
+      "get": {
+        "summary": "系统用户下拉选择列表",
+        "tags": ["RBAC - 系统用户管理"],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/change-personal-password": {
+      "post": {
+        "summary": "修改个人密码",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/change-personal-avatar": {
+      "post": {
+        "summary": "修改个人头像",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/logout": {
+      "get": {
+        "summary": "系统用户登出",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/detail": {
+      "get": {
+        "summary": "系统用户详情",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/user-info": {
+      "get": {
+        "summary": "当前用户信息",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/store": {
+      "post": {
+        "summary": "添加系统用户",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/update": {
+      "post": {
+        "summary": "更新系统用户",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/get-page-list": {
+      "get": {
+        "summary": "系统用户列表（分页）",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/get-list": {
+      "get": {
+        "summary": "系统用户列表",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/update-account-status": {
+      "post": {
+        "summary": "更新账户状态",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/update-password": {
+      "post": {
+        "summary": "更新系统用户密码",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/bind-crm-user": {
+      "post": {
+        "summary": "绑定CRM用户",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/unbind-crm-user": {
+      "post": {
+        "summary": "解绑CRM用户",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/password-expire-status": {
+      "get": {
+        "summary": "密码过期状态",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/force-logout-by-account": {
+      "get": {
+        "summary": "按账户强制登出",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-user/set-manage-specific-company": {
+      "post": {
+        "summary": "设置管理特定公司",
+        "tags": ["RBAC - 系统用户管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-role-permission-relation/update": {
+      "post": {
+        "summary": "更新系统角色权限关系",
+        "tags": ["RBAC - 系统角色权限关系"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应"
+          }
+        }
+      }
+    },
+    "/management/proxy/rbac/sys-permission/my-permission-list": {
+      "get": {
+        "summary": "我的权限列表",
+        "tags": ["RBAC - 系统权限管理"],
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "响应码",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "description": "响应消息",
+            "example": "success"
+          },
+          "data": {
+            "description": "响应数据"
+          }
+        }
+      },
+      "PaginatedResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "description": "数据列表"
+              },
+              "total": {
+                "type": "integer",
+                "description": "总数量"
+              },
+              "page": {
+                "type": "integer",
+                "description": "当前页码"
+              },
+              "page_size": {
+                "type": "integer",
+                "description": "每页数量"
+              }
+            }
+          }
+        }
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "role_no": {
+            "type": "string",
+            "description": "角色编号"
+          },
+          "name": {
+            "type": "string",
+            "description": "角色名称"
+          },
+          "remark": {
+            "type": "string",
+            "description": "角色备注"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "user_no": {
+            "type": "string",
+            "description": "用户编号"
+          },
+          "account": {
+            "type": "string",
+            "description": "账号"
+          },
+          "real_name": {
+            "type": "string",
+            "description": "真实姓名"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "手机号"
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱"
+          },
+          "company_no": {
+            "type": "string",
+            "description": "公司编号"
+          },
+          "department_no": {
+            "type": "string",
+            "description": "部门编号"
+          },
+          "role_no": {
+            "type": "string",
+            "description": "角色编号"
+          },
+          "account_status": {
+            "type": "string",
+            "description": "账户状态"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "CRM RBAC - 角色管理",
+      "description": "CRM系统角色管理相关接口"
+    },
+    {
+      "name": "CRM RBAC - 角色权限关系",
+      "description": "CRM系统角色权限关系管理相关接口"
+    },
+    {
+      "name": "CRM RBAC - 用户管理",
+      "description": "CRM系统用户管理相关接口"
+    },
+    {
+      "name": "CRM RBAC - 权限组管理",
+      "description": "CRM系统权限组管理相关接口"
+    },
+    {
+      "name": "RBAC - 系统角色管理",
+      "description": "系统角色管理相关接口"
+    },
+    {
+      "name": "RBAC - 系统权限组管理",
+      "description": "系统权限组管理相关接口"
+    },
+    {
+      "name": "RBAC - 系统用户管理",
+      "description": "系统用户管理相关接口"
+    },
+    {
+      "name": "RBAC - 系统角色权限关系",
+      "description": "系统角色权限关系管理相关接口"
+    },
+    {
+      "name": "RBAC - 系统权限管理",
+      "description": "系统权限管理相关接口"
+    }
+  ]
+}

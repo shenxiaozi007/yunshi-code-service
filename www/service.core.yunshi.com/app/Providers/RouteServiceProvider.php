@@ -85,7 +85,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => 'App\Http\Controllers\Common',
             'middleware' => ['cors'],
             'files' => [
-                'routes/common/common.php',
+                // 'routes/common/common.php',
             ],
         ],
 
